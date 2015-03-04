@@ -1,6 +1,6 @@
 {
   "name": "gray-percentage",
-  "description": "Convenience function to get a gray value by percentage e.g. gray(60) -> #999999",
+  "description": "Convenience function to get a gray value by percentage e.g. gray(60) -> rgb(153,153,153)",
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "bugs": {
