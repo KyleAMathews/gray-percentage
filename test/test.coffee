@@ -9,8 +9,8 @@ describe 'gray', ->
   it 'should return correct rgb values for various gray %s', ->
     expect(gray(0)).to.equal("rgb(0,0,0)")
     expect(gray(100)).to.equal("rgb(255,255,255)")
-    expect(gray(25)).to.equal("rgb(63.75,63.75,63.75)")
-    expect(gray(50)).to.equal("rgb(127.5,127.5,127.5)")
+    expect(gray(25)).to.equal("rgb(64,64,64)")
+    expect(gray(50)).to.equal("rgb(128,128,128)")
 
   it 'should round down values over 100', ->
     expect(gray(300)).to.equal("rgb(255,255,255)")

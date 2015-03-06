@@ -5,6 +5,6 @@ module.exports = function(value) {
   if (value < 0) {
     value = 0;
   }
-  var scaled = value * 255 / 100;
+  var scaled = Math.round(value * 255 / 100);
   return "rgb(" + scaled + "," + scaled + "," + scaled + ")";
 };
