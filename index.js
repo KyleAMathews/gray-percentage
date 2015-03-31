@@ -35,9 +35,9 @@ module.exports = function(lightness, hue) {
 
   var saturation = 0;
   if (hue !== 0) {
-    var a = 19.59773;
-    var b = -0.3080372;
-    var c = 0.001189917;
+    var a = 19.92978;
+    var b = -0.3651759;
+    var c = 0.001737214;
     saturation = a + b * lightness + c * Math.pow(lightness, 2);
   }
 
