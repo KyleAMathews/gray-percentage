@@ -35,9 +35,10 @@ module.exports = function(lightness, hue) {
 
   var saturation = 0;
   if (hue !== 0) {
-    var b = 0.07005384;
+    var a = 19.59773;
+    var b = -0.3080372;
     var c = 0.001189917;
-    saturation = b * lightness + c * Math.pow(lightness, 2);
+    saturation = a + b * lightness + c * Math.pow(lightness, 2);
   }
 
   return "hsl(" + hue + "," + saturation + "%," + lightness + "%)";
