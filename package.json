@@ -1,7 +1,7 @@
 {
   "name": "gray-percentage",
   "description": "Convenience function to get a gray value by percentage e.g. gray(60) -> hsla(0,0%,100%,0.4)",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "bugs": {
     "url": "https://github.com/KyleAMathews/gray-percentage/issues"
