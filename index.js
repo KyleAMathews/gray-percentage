@@ -2,19 +2,16 @@ function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
-module.exports = function(lightness, hue) {
+
+module.exports = function(lightness, hue, darkBackground) {
   if (typeof hue === "undefined") {
     hue = 0;
   }
-
-  if (lightness > 100) {
-    lightness = 100;
-  }
-  if (lightness < 0) {
-    lightness = 0;
+  if (typeof darkBackground === "undefined") {
+    darkBackground = false;
   }
 
-  // Converted named hues into numeric lightness value.
+  // Convert named hues into numeric lightness value.
   if (hue === "cool") {
     hue = 237;
   }
@@ -33,6 +30,13 @@ module.exports = function(lightness, hue) {
     throw new Error("Lightness is not a number");
   }
 
+  if (lightness > 100) {
+    lightness = 100;
+  }
+  if (lightness < 0) {
+    lightness = 0;
+  }
+
   var saturation = 0;
   if (hue !== 0) {
     var a = 19.92978;
@@ -41,5 +45,14 @@ module.exports = function(lightness, hue) {
     saturation = a + b * lightness + c * Math.pow(lightness, 2);
   }
 
-  return "hsl(" + hue + "," + saturation + "%," + lightness + "%)";
+  var opacity = 0
+  if (darkBackground) {
+    opacity = lightness / 100
+    lightness = '100%,'
+  } else {
+    opacity = (100 - lightness) / 100
+    lightness = '0%,'
+  }
+
+  return "hsla(" + hue + "," + saturation + "%," + lightness + opacity + ")";
 };

@@ -1,10 +1,22 @@
 # gray-percentage
-Convenience function to get a gray value by percentage e.g. gray(60) -> "hsl(0,0%,60%)"
+Convenience function to get a gray value by percentage e.g. gray(60) ->
+"hsla(0,0%,100%, 0.4)"
 
 The function takes a required "lightness" value from 0-100 and an
 optional second parameter to mixin color to the gray value. The second
 parameter can either be a "hue" value from 0-360 or one of three named
 hues, "cool", "slate", and "warm".
+
+As suggested by [Google Material
+Design](https://material.google.com/style/color.html#color-text-background-colors)
+we color lightness using opacity instead of gray values. Quoting Google:
+"Black or white text that is transparent remains legible and vibrant
+against background color changes. This makes it more flexible than grey
+text in the same contexts."
+
+We assume when picking the opacity/lightness that the background is
+light. If, for example, you have dark background with light text, set
+the third paramter, `darkBackground` to true e.g. `gray(80, 0, true)`.
 
 We use color theory to choose an appropriate saturation value. Basically
 the darker the gray, the higher the saturation value that is choosen.
@@ -25,13 +37,17 @@ The following is the curve that choose saturation values and is used
 var gray = require('gray-percentage');
 
 var textColor = gray(30);
-// textColor = "hsl(0,0%,30%)"
+// textColor = "hsla(0,0%,100%,0.7)"
 
 // Get a "cool" gray.
 var background = gray(93, "cool")
-// background = "hsl(237,0.9935851860000025%,93%)"
+// background = "hsla(237,0.9935851860000025%,100%,0.07)"
 
 // Mixin arbitrary hues e.g. Red.
 var sidebarBg = gray(15, 360)
-// sidebarBg = "hsl(360,14.84301465%,15%)"
+// sidebarBg = "hsla(360,14.84301465%,100%,0.85)"
+
+// Get color for dark background
+var lightGray = gray(85, 0, true)
+// lightGray = "hsla(0, 0%, 100%, 0.85)"
 ```
